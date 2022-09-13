@@ -26,11 +26,11 @@ function App() {
 
   };
   return (
-    <BrowserRouter>
-    <div className="grid-container ">
-    <header className="row">
+    <BrowserRouter >
+    <div className="md:relative">
+    <header className="flex md:flex-row justify-around md:py-12 mdpx-6 h-[10vh]">
  <div>
-    <Link className="brand text-3xl" to ="/">Eazyshop </Link>
+    <Link className="brand text-3xl" to ="/">ShopEazy </Link>
 </div>
 <div>
   <Link to="/cart">Cart{
@@ -54,7 +54,7 @@ function App() {
 
 </div>
     </header>
-     <main>
+     <main className='flex w-full p-5 md:h-full z-0'>
      <Route path="/cart/:id?" component={CartScreen}></Route>
        <Route path="/product/:id" component={ProductScreen}></Route>
        <Route path="/signin" component={SigninScreen}></Route>
@@ -66,8 +66,8 @@ function App() {
        <Route path="/products" component={AddProductScreen}></Route>
        <Route path="/" component ={HomeScreen} exact></Route> 
     </main>
-    <footer className="row center">
-        This Website has been designed by Brian Murithi &copy; 2020
+    <footer className=" md:fixed md:bottom-0 w-full h-3vh text-center py-5 mt-2 ">
+     <p className='text-lg font-medium'>Developed By B. Murithi with L for humanity</p> 
 
     </footer>
 </div>
