@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import LoadingBox from "../components/LoadingBox";
-import './addanimal-style.css'
 import MessageBox from "../components/MessageBox";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, listProducts, saveProduct } from "../actions/productActions";

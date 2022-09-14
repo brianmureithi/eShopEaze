@@ -33,47 +33,47 @@ export default function RegisterScreen(props) {
 
     },[props.history,redirect,userInfo]);
     return (
-        <div>
-            <form className="form" onSubmit={submitHandler}>
-                <div>
-                    <h1>Create Account</h1>
+        <div className='w-full'>
+            <form className="md:w-[60rem] mx-auto py-4 px-2" onSubmit={submitHandler}>
+                <div className='flex flex-col mb-4 text-center'>
+                    <h1 className='text-4xl'>Create Account</h1>
 
                 </div>
                 {loading && <LoadingBox></LoadingBox>}
                 {error && <MessageBox variant="danger">{error}</MessageBox>}
-                <div>
-                    <label htmlFor="name"> Name</label>
+                <div className='flex flex-col mb-4' >
+                    <label  className='mb-4 text-2xl font-[500]' htmlFor="name"> Name</label>
                     <input type="text"
                      id="name" 
                      placeholder="Enter Name" 
                      required 
                     onChange={(e) => setName(e.target.value)}/> 
                 </div>
-                <div>
-                    <label htmlFor="email"> Email</label>
+                <div className='flex flex-col mb-4'>
+                    <label className='mb-4 text-2xl font-[500]' htmlFor="email"> Email</label>
                     <input type="email"
                      id="email" 
                      placeholder="Enter Email" 
                      required
                     onChange={(e) => setEmail(e.target.value)}/> 
                 </div>
-                <div>
-                    <label htmlFor="password"> Password</label>
+                <div className='flex flex-col mb-4'>
+                    <label className='mb-4 text-2xl font-[500]' htmlFor="password"> Password</label>
                     <input type="password"
                      id="password" 
                      placeholder="Enter Password" 
                      required
                     onChange={(e) => setPassword(e.target.value)}/> 
                 </div>
-                <div>
-                    <label htmlFor="confirmPassword"> Confirm Password</label>
+                <div className='flex flex-col mb-4'>
+                    <label className='mb-4 text-2xl font-[500]' htmlFor="confirmPassword"> Confirm Password</label>
                     <input type="password"
                      id="confirmpassword" 
                      placeholder="Confirm Password" 
                      required
                     onChange={(e) => setConfirmPassword(e.target.value)}/> 
                 </div>
-                <div>
+                <div className='flex flex-col mt-10 mb-4'>
                     <label/>
                     <button className="primary" type="submit">Create account</button>
                 </div>
