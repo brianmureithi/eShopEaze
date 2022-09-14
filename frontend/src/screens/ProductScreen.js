@@ -22,34 +22,34 @@ export default function ProductScreen(props) {
     }
   
     return (
-        <div>
+        <div className='w-full'>
         {loading?(<LoadingBox></LoadingBox>)
         : error?(<MessageBox variant="danger">{error}</MessageBox>)
     :  ( 
-        <div>
-        <Link to="/">Back to Home</Link>
-    <div className="row top">
-        <div className="col-2">
-        <img className="large" src ={product.image} alt={product.name}></img>
+        <div className='px-2 md:py-2 md:px-8 '>
+        <Link to="/" className='p-2  border border-[#e6d057] m-2 rounded-md text-gray-900 hover:bg-[#e6d057] hover:text-slate-900 '>Back to Home</Link>
+    <div className="flex flex-col md:flex-row w-full md:mt-6 py-1">
+        <div className="w-full md:w-1/2 py-3 md-t-2 md:p-4 md:h-[70vh]">
+        <img className="w-full h-full object-contain border " src ={product.image} alt={product.name}/>
         </div>
-        <div className="col-1">
+        <div className="w-full md:w-1/4 p-4">
         <ul>
             <li>
-                <h1>{product.name}</h1>
+                <h1 className='text-4xl font-bold'>{product.name}</h1>
             </li>
-            <li>
+            <li className='my-4'>
                 <Rating rating={product.rating}
                 numReviews={product.numReviews}></Rating>
             </li>
-            <li>
-                price : sh{product.price}
+            <li className='my-4'>
+               <p className='text-3xl md:text-2xl font-medium'>Costs  <span> KES{product.price}</span></p> 
              </li>
-             <li>
-               desciption : <p>{product.description}</p>
+             <li className='py-3 px-2 border h-[10vh] rounded-md shadow-sm'>
+               <p className=' text-3xl font-normal'>{product.description}</p>
              </li>
         </ul>
         </div>
-        <div className="col-1">
+        <div className="w-full md:w-1/4">
             <div className="card card-body">
                 <ul>
                     <li>
