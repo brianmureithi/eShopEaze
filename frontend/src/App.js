@@ -28,23 +28,23 @@ function App() {
   return (
     <BrowserRouter >
     <div className="md:relative">
-    <header className="flex md:flex-row justify-around md:py-12 mdpx-6 h-[10vh]">
+    <header className=" flex  md:flex-row justify-between px-2 py-10 md:justify-around  md:py-12 md:px-6 h-[10vh]">
  <div>
-    <Link className="brand text-3xl" to ="/">ShopEazy </Link>
+    <Link className="font-medium md:font-extrabold text-5xl text-slate-200  md:text-4xl tracking-wider  " to ="/">ShopEazy </Link>
 </div>
 <div>
-  <Link to="/cart">Cart{
-    cartItems.length>0 &&(
-    <span className="badge">{cartItems.length}</span>
+  <Link to="/cart" className='text-2xl font-normal text-slate-100'>Cart{
+    cartItems.length>0 &&( 
+    <span className="rounded-[500%]  text-xl py-[0.2rem] px-[0.7rem] ml-2  shadow-lg bg-red-600  ">{cartItems.length}</span>
     )
   }</Link>
    { 
      userInfo ? (
-       <div className="dropdown">
-       <Link to='#'>{userInfo.name}{' '}
-       <i className="fa fa-caret-down"></i></Link>
+       <div className="dropdown" >
+       <Link to='#' className='text-2xl font-normal text-slate-100 '>{userInfo.name}{' '}
+       <i className="fa fa-caret-down "></i></Link>
        <ul className="dropdown-content">
-         <Link to="#signout" onClick={signoutHandler}>Sign out</Link>
+         <Link to="#signout" onClick={signoutHandler} className='text-2xl font-normal text-slate-100 '>Sign out</Link>
        </ul>
        </ div>
 ):(
@@ -67,7 +67,7 @@ function App() {
        <Route path="/" component ={HomeScreen} exact></Route> 
     </main>
     <footer className=" md:fixed md:bottom-0 w-full h-3vh text-center py-5 mt-2 ">
-     <p className='text-lg font-medium'>Developed By B. Murithi with L for humanity</p> 
+     <p className='text-xl font-normal'>Developed By B. Murithi with L for humanity</p> 
 
     </footer>
 </div>
