@@ -28,28 +28,28 @@ export default function CartScreen(props) {
   }
     return (
         
-        <div className="row top">
+        <div className="flex flex-col md:flex-row justify-between w-full">
             
-            <div className="col-2">
+            <div className="w-full md:w-3/4">
                 <h1>Cart</h1>
      {cartItems.length === 0 ? <MessageBox>
          Cart is empty. <Link to="/">Start Shopping </Link>
      </MessageBox>:
      (
-         <ul>
+         <ul className=''>
              {
                  cartItems.map((item)=>(
                      <li key={item.product}>
-                         <div className="row"> 
+                         <div className=" flex flex-row justify-between flex-wrap border p-2"> 
                          <div>
                              <img src={item.image} alt={item.name} className="small"></img>
                          </div>
-                         <div className="min-30">
-                             <Link to={`/product/${item.product}`}>
+                         <div className="w-1/2 py-5 md:w-max">
+                             <Link className='text-2xl font-semibold' to={`/product/${item.product}`}>
                                  {item.name}
                              </Link>
                          </div>
-                         <div>
+                         <div className='w-1/2 mt-3  md:w-max'>
                         <select value={item.qty} 
                         onChange={e=> dispatch(
                             addToCart(item.product,Number(e.target.value))
@@ -61,11 +61,11 @@ export default function CartScreen(props) {
                                          }
                             </select>   
                          </div>
-                         <div>
-                           sh {item.price}     
+                         <div className='w-1/4 py-5  md:w-max md:font-semibold'>
+                           kes {item.price}     
                          </div>
-                         <div>
-                             <button type="button" onClick={() => removeFromCartHandler(item.product)}>
+                         <div className='w-1/4  '>
+                             <button type="button" className='hover:bg-red-500 hover:text-white hover:border-none transition ease-in-out hover:scale-90'onClick={() => removeFromCartHandler(item.product)}>
                                  Delete
                              </button>
                          </div>
@@ -77,12 +77,12 @@ export default function CartScreen(props) {
      )}           
 
             </div>
-            <div className="col-1">
+            <div className="mt-4 md:w-1/4">
                 <div className="card card-body">
                     <ul>
                         <li>
-            <h2>SubTotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items): 
-            sh {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</h2>
+            <h2>SubTotal <span className='text-xl font-black text-gray-700'>({cartItems.reduce((a, c) => a + c.qty, 0)} items)</span>: 
+            kes {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</h2>
                         </li>
                         <li>
                        <button type="button" 

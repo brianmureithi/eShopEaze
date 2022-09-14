@@ -27,7 +27,7 @@ function App() {
   };
   return (
     <BrowserRouter >
-    <div className="md:relative">
+    <div className=" md:relative relative min-h-full">
     <header className=" flex  md:flex-row justify-between px-2 py-10 md:justify-around  md:py-12 md:px-6 h-[10vh]">
  <div>
     <Link className="font-medium md:font-extrabold text-5xl text-slate-200  md:text-4xl tracking-wider  " to ="/">ShopEazy </Link>
@@ -54,7 +54,7 @@ function App() {
 
 </div>
     </header>
-     <main className='flex w-full p-5 md:h-full z-0'>
+     <main className='flex w-full px-5 pt-3 py-[4rem] md:h-full z-0'>
      <Route path="/cart/:id?" component={CartScreen}></Route>
        <Route path="/product/:id" component={ProductScreen}></Route>
        <Route path="/signin" component={SigninScreen}></Route>
@@ -66,7 +66,7 @@ function App() {
        <Route path="/products" component={AddProductScreen}></Route>
        <Route path="/" component ={HomeScreen} exact></Route> 
     </main>
-    <footer className=" md:fixed md:bottom-0 w-full h-3vh text-center py-5 mt-2 ">
+    <footer className="absolute bottom-0   w-full h-[4rem] text-center py-5 mt-2 ">
      <p className='text-xl font-normal'>Developed By B. Murithi with L for humanity</p> 
 
     </footer>

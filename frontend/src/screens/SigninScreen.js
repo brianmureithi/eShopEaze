@@ -25,35 +25,35 @@ export default function SigninScreen(props) {
 
     },[props.history,redirect,userInfo]);
     return (
-        <div>
-            <form className="form" onSubmit={submitHandler}>
-                <div>
-                    <h1>Sign In</h1>
+        <div className='w-full mt-8'>
+            <form className=" md:w-[60rem] mx-auto py-4 px-2" onSubmit={submitHandler}>
+                <div className='flex flex-col mb-4 text-center'>
+                    <h1 className='text-4xl'>Sign In</h1>
 
                 </div>
                 {loading && <LoadingBox></LoadingBox>}
                 {error && <MessageBox variant="danger">{error}</MessageBox>}
-                <div>
-                    <label htmlFor="email"> Email Address</label>
+                <div className='flex flex-col mb-4'>
+                    <label className='mb-4 text-2xl font-[500]'htmlFor="email"> Email Address</label>
                     <input type="email"
                      id="email" 
                      placeholder="Enter Email" 
                      required
                     onChange={(e) => setEmail(e.target.value)}/> 
                 </div>
-                <div>
-                    <label htmlFor="password"> Password</label>
+                <div className='flex flex-col mb-4'>
+                    <label htmlFor="password" className='mb-4 text-2xl font-[500]'> Password</label>
                     <input type="password"
                      id="password" 
                      placeholder="Enter Password" 
                      required
                     onChange={(e) => setPassword(e.target.value)}/> 
                 </div>
-                <div>
-                    <label/>
+                <div className='flex flex-col mb-4'>
+                    <label className='mb-4 text-2xl font-[500]'/>
                     <button className="primary" type="submit">Sign In</button>
                 </div>
-                <div>
+                <div className='flex flex-col mb-4'>
                     <label/>
                     <div>
                         New Here?{' '}
