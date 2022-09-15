@@ -27,7 +27,8 @@ export default function ProductScreen(props) {
         : error?(<MessageBox variant="danger">{error}</MessageBox>)
     :  ( 
         <div className='px-2 md:py-2 md:px-8 '>
-        <Link to="/" className='p-2  border border-[#e6d057] m-2 rounded-md text-gray-900 hover:bg-[#e6d057] hover:text-slate-900 '>Back to Home</Link>
+        <Link to="/" className='p-2 inline-block border border-[#6c6435] m-1 rounded-md text-gray-900 bg-[#e6d057] hover:text-slate-700 
+        transition ease-in-out hover:scale-95'>Back to Home</Link>
     <div className="flex flex-col md:flex-row w-full md:mt-6 py-1">
         <div className="w-full md:w-1/2 py-3 md-t-2 md:p-4 md:h-[70vh]">
         <img className="w-full h-full object-contain border " src ={product.image} alt={product.name}/>

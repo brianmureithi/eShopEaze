@@ -16,18 +16,19 @@ export default function ShippingAdressScreen(props) {
     const [address, setAddress] = useState(shippingAddress.address);
     const [city, setCity] = useState(shippingAddress.city);
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+    const [phoneNumber, setPhoneNumber] = useState(shippingAddress.phoneNumber);
     const [country, setCountry] = useState(shippingAddress.country);
     const dispatch = useDispatch();
   
     const submitHandler = (e) => {
         e.preventDefault(); 
-        dispatch(saveShippingAddress({fullName, address, city, postalCode,
+        dispatch(saveShippingAddress({fullName, address, city, postalCode,phoneNumber,
             country}));
             props.history.push('/payment');
     };
     
     return (
-        <div>
+        <div className='w-full'>
             <CheckoutSteps step1 step2></CheckoutSteps>
     <form className="form" onSubmit={submitHandler}>
         <div>
@@ -43,6 +44,18 @@ export default function ShippingAdressScreen(props) {
                  required ></input>
             </div>
             <div>
+                <label htmlFor ="city">Phone Number</label>
+                <input type="tel" 
+                pattern='[0-9]*'
+                inputMode='numeric'
+                id="phone"
+                placeholder="Enter MPESA Number e.g 0712..." 
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                 required />
+            </div>
+            <div>
+         
                 <label htmlFor ="address">Address</label>
                 <input type="text" 
                 id="address"

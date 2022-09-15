@@ -1,4 +1,5 @@
-import express from 'express';
+import express, { response } from 'express';
+import request from 'request';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';    
 import productRouter from './routers/productRouter.js';
@@ -26,6 +27,8 @@ app.get('/api/config/paypal', (req,res) =>{
 app.get('/',(req,res) =>{
     res.send('Server is up and running');
 });
+
+
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('frontend/build'));
 }
@@ -33,7 +36,40 @@ if(process.env.NODE_ENV === 'production'){
 app.use((err, req, res, next) =>{
   res.status(500).send({message: err.message});  
 });
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 app.listen(port, ()=>{
     console.log(`Server at http://localhost:${port}`);
 });
+app.get('/access_token', access, (req,res) =>{
+    res.status(200).json({access_token: req.access_token})
+  
+})
+
+
+
+function access(req, res, next){
+    let url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+    let auth = Buffer.from('8qUAN43PvCrMcSII1yLPUb2aCEk1cLOk:3at8kMLKaJg4I9dA').toString('base64');
+    
+
+
+    request({
+        uri:url,
+        headers:{
+            "Authorization": "Basic " + auth
+        }
+
+    }, (error, response, body)=>{
+        if(error){
+            console.log(error);
+        }
+        else{
+            req.access_token = JSON.parse(body).access_token
+            next()
+            
+        }
+
+    })
+
+
+}
