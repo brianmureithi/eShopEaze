@@ -1,5 +1,4 @@
 import Axios from 'axios';
-import {PayPalButton} from 'react-paypal-button-v2';
 import React, {useEffect,useState} from 'react';
 import {useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -26,7 +25,7 @@ if(!userInfo){
 
 
     useEffect(() => {
-        const addPayPalScript = async () => {
+   /*      const addPayPalScript = async () => {
             const { data } = await Axios.get('/api/config/paypal');
             const script = document.createElement('script');
             script.type='text/javascript';
@@ -38,20 +37,20 @@ if(!userInfo){
             document.body.appendChild(script);
 
 
-        };
+        }; */
         if(!order) {
             dispatch(detailsOrder(orderId));
 
         }else{
             if(!order.isPaid){
-                if(!window.paypal){
+                /* if(!window.paypal){
                     addPayPalScript();
                 }else{
                     setSdkReady(true);
-                }
+                } */
             }
         }
-                },[dispatch, orderId, order, sdkReady]);
+                },[dispatch, orderId, order, sdkReady]); 
 
         
                 const successPaymentHandler = () =>{
@@ -60,8 +59,8 @@ if(!userInfo){
     return loading? (<LoadingBox></LoadingBox>):
     error? (<MessageBox variant="danger">{error}</MessageBox>):
     (
-        <div>
-            <div> <h1>Order: {order._id} </h1></div>
+        <div className='w-full'>
+            <div> <h1 className='text-2xl font-bold'>Order: {order._id} </h1></div>
            
            
         <div className="row top">
@@ -69,13 +68,14 @@ if(!userInfo){
                 <ul>
                     <li>
                         <div className="card card-body">
-                            <h2>Shipping</h2>
+                            <h2 className='text-3xl font-normal'>Delivery Information</h2>
                             <p>
             <strong>Name:</strong> {order.shippingAddress.fullName} <br/>
             <strong>Address:</strong> {order.shippingAddress.address},
             {order.shippingAddress.city},
             {order.shippingAddress.postalCode},
-            {order.shippingAddress.country}
+            {order.shippingAddress.country}<br/>
+            <strong>phoneNumber:</strong> {order.shippingAddress.phoneNumber} <br/>
     </p>
     {order.isDelivered? <MessageBox variant="success"> Delivered on 
     {order.deliveredAt}</MessageBox>:
@@ -131,35 +131,35 @@ if(!userInfo){
             <div className="col-1">
                 <div className= "card card-body">
                     <ul>
-                        <li>
-                            <h2>Cost Summary</h2>   
+                        <li className='text-center'>
+                            <h2 className='font-bold'>Cost Summary</h2>   
                         </li>
                         
                     <li>
                         <div className="row">
                             <div>Items sub-total</div>
-                             <div>sh{order.itemsPrice.toFixed(2)}</div>
+                             <div>kes {order.itemsPrice.toFixed(2)}</div>
 
                         </div>
                     </li>
                     <li>
                         <div className="row">
-                            <div>Shipping</div>
-                             <div>sh{order.shippingPrice.toFixed(2)}</div>
+                            <div>Delivery</div>
+                             <div>kes {order.shippingPrice.toFixed(2)}</div>
 
                         </div>
                     </li>
                     <li>
                         <div className="row">
                             <div>Tax</div>
-                             <div>sh{order.taxPrice.toFixed(2)}</div>
+                             <div>kes {order.taxPrice.toFixed(2)}</div>
 
                         </div>
                     </li>
                     <li>
                         <div className="row">
                             <div><strong>Order total</strong></div>
-                             <div><strong>sh{order.totalPrice.toFixed(2)}</strong></div>
+                             <div><strong>kes {order.totalPrice.toFixed(2)}</strong></div>
 
                         </div>
                     </li>
@@ -167,12 +167,14 @@ if(!userInfo){
                         !order.isPaid && (
                             <li>
                                 {
-                                    !sdkReady? (<LoadingBox></LoadingBox>):
+
+                                    <button className='primary block' type='button' >Make Payment</button>
+                                    /* !sdkReady? (<LoadingBox></LoadingBox>):
                                     (
                                         <PayPalButton amount={order.totalPrice} onSuccess={successPaymentHandler}>
                                             
                                         </PayPalButton>
-                                    )
+                                    ) */
                                 }
                             </li>
                         )

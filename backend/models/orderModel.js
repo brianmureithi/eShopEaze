@@ -18,6 +18,7 @@ const orderSchema = new mongoose.Schema({
         city: {type: String, required: true},
         postalCode: {type: String, required: true},
         country: {type: String, required: true},
+        phoneNumber: {type: String, required: true},
     },
     paymentMethod: {type: String, required: true},
     itemsPrice: {type: Number, required: true},

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {useSelector,useDispatch} from 'react-redux';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
+import * as FontAwesome from 'react-icons/fa';
 import { signout } from './actions/userActions';
 import AddProductScreen from './screens/AddProductScreen';
 import CartScreen from './screens/CartScreen';
@@ -19,6 +20,7 @@ function App() {
   const {cartItems} = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } =userSignin;
+  console.log(userInfo.isAdmin);
   const dispatch = useDispatch();
 
   const signoutHandler = () => {
@@ -39,7 +41,13 @@ function App() {
     )
   }</Link>
    { 
-     userInfo ? (
+   userInfo.isAdmin ? (
+    <Link to="/products" className='text-2xl font-normal text-slate-100'>Add Products</Link>
+
+   ):null
+   }
+    { userInfo ? (
+
        <div className="dropdown" >
        <Link to='#' className='text-2xl font-normal text-slate-100 '>{userInfo.name}{' '}
        <i className="fa fa-caret-down "></i></Link>
@@ -67,7 +75,7 @@ function App() {
        <Route path="/" component ={HomeScreen} exact></Route> 
     </main>
     <footer className="absolute bottom-0   w-full h-[4rem] text-center py-5 mt-2 ">
-     <p className='text-xl font-normal'>Developed By B. Murithi with L for humanity</p> 
+     <p className='text-xl font-normal'>Developed By B. Murithi with <FontAwesome.FaHeart className='inline text-red-500'/> for humanity</p> 
 
     </footer>
 </div>

@@ -47,19 +47,20 @@ cart.itemsPrice= toPrice(
 
     },[dispatch, order, props.history, success])
     return (
-        <div>
+        <div className='w-full'>
             <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
         <div className="row top">
             <div className="col-2">
                 <ul>
                     <li>
                         <div className="card card-body">
-                            <h2>Shipping</h2>
+                            <h2>Delivery</h2>
                             <p>
             <strong>Name:</strong> {cart.shippingAddress.fullName} <br/>
             <strong>Address:</strong> {cart.shippingAddress.address},
             {cart.shippingAddress.city},{cart.shippingAddress.postalCode},
-            {cart.shippingAddress.country}
+            {cart.shippingAddress.country}<br/>
+            <strong>phoneNumber:</strong> {cart.shippingAddress.phoneNumber} <br/>
     </p>
        </div>
      </li>
@@ -114,28 +115,28 @@ cart.itemsPrice= toPrice(
                     <li>
                         <div className="row">
                             <div>Items sub-total</div>
-                             <div>sh{cart.itemsPrice.toFixed(2)}</div>
+                             <div>kes {cart.itemsPrice.toFixed(2)}</div>
 
                         </div>
                     </li>
                     <li>
                         <div className="row">
-                            <div>Shipping</div>
-                             <div>sh{cart.shippingPrice.toFixed(2)}</div>
+                            <div>Delivery</div>
+                             <div>kes {cart.shippingPrice.toFixed(2)}</div>
 
                         </div>
                     </li>
                     <li>
                         <div className="row">
                             <div>Tax</div>
-                             <div>sh{cart.taxPrice.toFixed(2)}</div>
+                             <div>kes {cart.taxPrice.toFixed(2)}</div>
 
                         </div>
                     </li>
                     <li>
                         <div className="row">
                             <div><strong>Total</strong></div>
-                             <div><strong>sh{cart.totalPrice.toFixed(2)}</strong></div>
+                             <div><strong>kes {cart.totalPrice.toFixed(2)}</strong></div>
 
                         </div>
                     </li>

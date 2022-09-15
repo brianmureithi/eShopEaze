@@ -75,6 +75,8 @@ html{
    button{
     background-color: #f8f8f8;
     cursor: pointer;
+    transition: ease-in-out;
+    transition-duration: 80ms;
   
    }
    input:hover,
@@ -88,6 +90,9 @@ html{
    }
    button.block{
      width: 100%;
+   }
+   button.block:hover{
+    transform: scale(0.97);
    }
   /*Header*/
   header a{
@@ -241,13 +246,17 @@ html{
   .dropdown:hover .dropdown-content{
     display: block;
   }
-  
+  .checkout-steps{
+    height:10vh;
+  }
   .checkout-steps > div {
-    border-top:0.3rem #c0c0c0 solid;
+    border-top:0.2rem #c0c0c0 solid;
     color:#c0c0c0;
     flex:1;
-    padding: 1rem;
+    min-height: 10vh;
+    padding: 0.8rem;
     font-weight: 750;
+    max-height: 10vh !important;
   }
   .checkout-steps > div.active{
     border-top-color: #ff7c11;
