@@ -38,7 +38,7 @@ if(process.env.NODE_ENV === 'production'){
 app.use((err, req, res, next) =>{
   res.status(500).send({message: err.message});  
 });
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 5000;
 app.listen(port, ()=>{
     console.log(`Server at http://localhost:${port}`);
 });
@@ -110,6 +110,35 @@ app.post('/confirmation', (req, res) => {
 app.post('/validation', (req, resp) => {
     console.log('....................... validation .............')
     console.log(req.body)
+})
+app.get('/simulate', access, (req, res) => {
+    let url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
+    let auth = "Bearer " + req.access_token
+
+    request(
+        {
+            url: url,
+            method: "POST",
+            headers: {
+                "Authorization": auth
+            },
+            json: {
+                "ShortCode": "600979",
+                "CommandID": "CustomerPayBillOnline",
+                "Amount": "100",
+                "Msisdn": "254768938573",
+                "BillRefNumber": "TestAPI"
+            }
+        },
+        function (error, response, body) {
+            if (error) {
+                console.log(error)
+            }
+            else {
+                res.status(200).json(body)
+            }
+        }
+    )
 })
 
 
